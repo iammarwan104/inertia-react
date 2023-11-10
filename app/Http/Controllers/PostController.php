@@ -56,4 +56,42 @@ class PostController extends Controller
         //redirect
         return redirect()->route('posts.index')->with('success', 'Data Berhasil Disimpan!');
     }
+
+    /**
+     * edit
+     *
+     * @param  mixed $post
+     * @return void
+     */
+    public function edit(Post $post)
+    {
+        return inertia('Posts/Edit', [
+            'post' => $post,
+        ]);
+    }
+
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $post
+     * @return void
+     */
+    public function update(Request $request, Post $post)
+    {
+        //set validation
+        $request->validate([
+            'title'   => 'required',
+            'content' => 'required',
+        ]);
+
+        //update post
+        $post->update([
+            'title'     => $request->title,
+            'content'   => $request->content
+        ]);
+
+        //redirect
+        return redirect()->route('posts.index')->with('success', 'Data Berhasil Diupdate!');
+    }
 }
