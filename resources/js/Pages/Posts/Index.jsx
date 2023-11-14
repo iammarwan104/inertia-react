@@ -32,16 +32,18 @@ export default function PostIndex({ posts, session }) {
                         <table className="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">TITLE</th>
-                                    <th scope="col">CONTENT</th>
-                                    <th scope="col">ACTIONS</th>
+                                    <th scope="col">NAMA</th>
+                                    <th scope="col">DESKRIPSI</th>
+                                    <th scope="col">GAMBAR</th>
+                                    <th scope="col">AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {posts.map((post, index) => (
                                     <tr key={index}>
-                                        <td>{post.title}</td>
-                                        <td>{post.content}</td>
+                                        <td>{post.nama_project}</td>
+                                        <td>{post.deskripsi_project}</td>
+                                        <td><img src={`${post.gambar_1}`} alt={post.gambar_1} /></td>
                                         <td className="text-center">
                                             <Link href={`/posts/${post.id}/edit`} className="btn btn-sm btn-primary me-2">EDIT</Link>
                                             <button onClick={() => deletePost(post.id)} className="btn btn-sm btn-danger">DELETE</button>

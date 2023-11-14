@@ -43,14 +43,16 @@ class PostController extends Controller
     {
         //set validation
         $request->validate([
-            'title'   => 'required',
-            'content' => 'required',
+            'nama_project'   => 'required',
+            'deskripsi_project' => 'required',
+            'gambar_1' => 'required',
         ]);
 
         //create post
         Post::create([
-            'title'     => $request->title,
-            'content'   => $request->content
+            'nama_project'     => $request->nama_project,
+            'deskripsi_project'   => $request->deskripsi_project,
+            'gambar_1'   => $request->gambar_1
         ]);
 
         //redirect
@@ -81,14 +83,16 @@ class PostController extends Controller
     {
         //set validation
         $request->validate([
-            'title'   => 'required',
-            'content' => 'required',
+            'nama_project'   => 'required',
+            'deskripsi_project' => 'required',
+            'gambar_1' => 'required',
         ]);
 
         //update post
         $post->update([
-            'title'     => $request->title,
-            'content'   => $request->content
+            'nama_project'     => $request->nama_project,
+            'deskripsi_project'   => $request->deskripsi_project,
+            'gambar_1'   => $request->gambar_1
         ]);
 
         //redirect

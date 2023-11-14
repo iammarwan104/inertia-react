@@ -15,7 +15,8 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'content'
+        'nama_project',
+        'deskripsi_project',
+        'gambar_1'
     ];
 }

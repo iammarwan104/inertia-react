@@ -10,16 +10,26 @@ import { Inertia } from '@inertiajs/inertia';
 export default function CreatePost({ errors }) {
 
     //define state
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+    const [nama_project, setNama_project] = useState('');
+    const [deskripsi_project, setDeskripsi_project] = useState('');
+    const [gambar_1, setGambar_1] = useState('');
 
+
+    function kopi(e) {
+        const file = e.target.files[0];
+        setGambar_1(file.name)
+        // console.log(file.name);
+    }
+
+    console.log(gambar_1);
     //function "storePost"
     const storePost = async (e) => {
         e.preventDefault();
 
         Inertia.post('/posts', {
-            title: title,
-            content: content
+            nama_project: nama_project,
+            deskripsi_project: deskripsi_project,
+            gambar_1: gambar_1
         });
     }
 
@@ -35,22 +45,32 @@ export default function CreatePost({ errors }) {
                             <form onSubmit={storePost}>
 
                                 <div className="mb-3">
-                                    <label className="form-label fw-bold">Title</label>
-                                    <input type="text" className="form-control" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Masukkan Judul Post" />
+                                    <label className="form-label fw-bold">Nama Project</label>
+                                    <input type="text" className="form-control" value={nama_project} onChange={(e) => setNama_project(e.target.value)} placeholder="Masukkan Nama Project" />
                                 </div>
-                                {errors.title && (
+                                {errors.nama_project && (
                                     <div className="alert alert-danger">
-                                        {errors.title}
+                                        {errors.nama_project}
                                     </div>
                                 )}
 
                                 <div className="mb-3">
-                                    <label className="form-label fw-bold">Content</label>
-                                    <textarea className="form-control" value={content} onChange={(e) => setContent(e.target.value)} placeholder="Masukkan Judul Post" rows={4}></textarea>
+                                    <label className="form-label fw-bold">Deskripsi Project</label>
+                                    <textarea className="form-control" value={deskripsi_project} onChange={(e) => setDeskripsi_project(e.target.value)} placeholder="Masukkan Deskripsi Project" rows={4}></textarea>
                                 </div>
-                                {errors.content && (
+                                {errors.deskripsi_project && (
                                     <div className="alert alert-danger">
-                                        {errors.content}
+                                        {errors.deskripsi_project}
+                                    </div>
+                                )}
+
+                                <div className="mb-3">
+                                    <label className="form-label fw-bold">Gambar 1</label>
+                                    <input type="file" className="form-control" onChange={kopi} />
+                                </div>
+                                {errors.gambar_1 && (
+                                    <div className="alert alert-danger">
+                                        {errors.gambar_1}
                                     </div>
                                 )}
 

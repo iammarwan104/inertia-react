@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); //untuk menyimpan judul post
-            $table->text('content'); // untuk menyimpan isi test
+            $table->string('nama_project'); //untuk menyimpan judul post
+            $table->text('deskripsi_project'); // untuk menyimpan isi test
+            $table->string('gambar_1'); //untuk menyimpan gambar 1
             $table->timestamps();
         });
     }

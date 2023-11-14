@@ -10,16 +10,16 @@ import { Inertia } from '@inertiajs/inertia';
 export default function EditPost({ errors, post }) {
 
     //define state
-    const [title, setTitle] = useState(post.title);
-    const [content, setContent] = useState(post.content);
+    const [nama_project, setNama_project] = useState(post.nama_project);
+    const [deskripsi_project, setDeskripsi_project] = useState(post.deskripsi_project);
 
     //function "updatePost"
     const updatePost = async (e) => {
         e.preventDefault();
 
         Inertia.put(`/posts/${post.id}`, {
-            title: title,
-            content: content
+            nama_project: nama_project,
+            deskripsi_project: deskripsi_project
         });
     }
 
@@ -35,22 +35,22 @@ export default function EditPost({ errors, post }) {
                             <form onSubmit={updatePost}>
 
                                 <div className="mb-3">
-                                    <label className="form-label fw-bold">Title</label>
-                                    <input type="text" className="form-control" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Masukkan Judul Post" />
+                                    <label className="form-label fw-bold">Nama Project</label>
+                                    <input type="text" className="form-control" value={nama_project} onChange={(e) => setNama_project(e.target.value)} placeholder="Masukkan Judul Post" />
                                 </div>
-                                {errors.title && (
+                                {errors.nama_project && (
                                     <div className="alert alert-danger">
-                                        {errors.title}
+                                        {errors.nama_project}
                                     </div>
                                 )}
 
                                 <div className="mb-3">
-                                    <label className="form-label fw-bold">Content</label>
-                                    <textarea className="form-control" value={content} onChange={(e) => setContent(e.target.value)} placeholder="Masukkan Judul Post" rows={4}></textarea>
+                                    <label className="form-label fw-bold">Deskripsi Project</label>
+                                    <textarea className="form-control" value={deskripsi_project} onChange={(e) => setDeskripsi_project(e.target.value)} placeholder="Masukkan Judul Post" rows={4}></textarea>
                                 </div>
-                                {errors.content && (
+                                {errors.deskripsi_project && (
                                     <div className="alert alert-danger">
-                                        {errors.content}
+                                        {errors.deskripsi_project}
                                     </div>
                                 )}
 
